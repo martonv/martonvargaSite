@@ -1,0 +1,111 @@
+---
+const {
+  name = "Marton Varga",
+  title = "Full-Stack Developer & Chemical Engineer",
+  email = "marton@vargaventure.com",
+} = Astro.props;
+---
+
+<header class="top" id="top">
+  <div class="container top__inner">
+    <div class="brand">
+      <div class="brand__name">{name}</div>
+      <div class="brand__title">{title}</div>
+    </div>
+
+    <div class="actions">
+      <a class="email" href={`mailto:${email}`}>
+        {email}
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .top{
+    top: 0;
+    z-index: 20;
+    padding: 0 1.25rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+    backdrop-filter: blur(14px);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(11, 33, 30, 0.85),
+        rgba(11, 33, 30, 0.70)
+      );
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .top__inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: 1.25rem 0;
+  }
+
+  /* Brand */
+  .brand__name{
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+    color: var(--promo-moderate);
+  }
+
+  .brand__title{
+    margin-top: 0.15rem;
+    font-size: 0.95rem;
+    font-weight: 650;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* Actions */
+  .actions{
+    display: flex;
+    align-items: center;
+  }
+
+  .email{
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.85rem;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.95rem;
+
+    color: var(--promo-moderate);
+    background: rgba(0, 123, 108, 0.18);
+    border: 1px solid rgba(0, 123, 108, 0.35);
+
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background 0.15s ease;
+  }
+
+  .email:hover{
+    text-decoration: none;
+    transform: translateY(-1px);
+    background: rgba(0, 123, 108, 0.28);
+    box-shadow: var(--ring);
+  }
+
+  @media (max-width: 760px){
+    .top__inner{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .actions{
+      width: 100%;
+    }
+
+    .email{
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

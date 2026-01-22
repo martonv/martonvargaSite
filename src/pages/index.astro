@@ -1,16 +1,23 @@
 ---
-
+import SiteLayout from "../layouts/siteLayout.astro";
+import Header from "../components/Header.astro";
+import ResumeBody from "../components/ResumeBody.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<SiteLayout title="Marton Varga | Portfolio" description="Portfolio for Marton Varga, Software Engineer & Chemical Engineer.">
+  <Header
+    name="Marton Varga"
+    title="Software Engineer • Chemical Engineer • Formulation Chemist"
+    location="Centennial, CO"
+    email="marton@vargaventure.com"
+    phone="(615) 715-0431"
+    site="martonvarga.com"
+  />
+
+  <main class="container">
+    <ResumeBody />
+  </main>
+
+  <Footer />
+</SiteLayout>

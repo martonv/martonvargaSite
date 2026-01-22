@@ -1,0 +1,85 @@
+---
+const {
+  title = "Marton Varga - Portfolio",
+  description = "Portfolio for Marton Varga, Full-Stack Developer & Chemical Engineer.",
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <style>
+      :root{
+        /* Old + BRAND greens 
+        --promo-subtle: #006155;
+        --promo-moderate: #00493f;
+        --promo-main: #007b6c; */
+
+        --promo-subtle: #9cccc7;
+        --promo-moderate: #3d8a7e;
+        --promo-main: #4f7b76;
+
+        /* Dark theme tokens */
+        --bg: #061614;                 /* deep green-black */
+        --card: #0b211e;               /* dark green slate */
+        --text: rgba(255,255,255,0.92);
+        --muted: rgba(255,255,255,0.68);
+
+        --radius: 18px;
+        --shadow: 0 12px 34px rgba(0,0,0,0.45);
+        --ring: 0 0 0 4px rgb(14, 245, 218);
+
+        --max: 980px;
+
+        /* Consistent spacing */
+        --gap: 1.25rem;                /* matches your ResumeBody .wrap/.grid gaps */
+        --page-pad: var(--gap);         /* left/right padding equals inner spacing */
+      }
+
+      *{ box-sizing: border-box; }
+      html, body{ height: 100%; }
+
+      body{
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.45;
+      }
+
+      a{ color: rgba(140, 255, 240, 0.9); text-decoration: none; }
+      a:hover{ text-decoration: underline; }
+
+      .container{
+        width: min(var(--max), calc(100% - (var(--page-pad) * 2)));
+        margin: 0 auto;
+      }
+
+      .shell{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0 1.25rem;
+      }
+
+      main{
+        flex: 1;
+        padding: 2.25rem 0 2.75rem;
+      }
+
+      ::selection{
+        background: rgba(0, 123, 108, 0.28);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="shell">
+      <slot />
+    </div>
+  </body>
+</html>
