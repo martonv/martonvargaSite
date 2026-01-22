@@ -1,0 +1,115 @@
+---
+const FORMSPREE = "https://formspree.io/f/xovgzpnw";
+---
+
+<div class="contactWrap" data-contact-wrap>
+  <form class="contactForm card card--glass card__pad" action={FORMSPREE} method="POST" data-contact-form>
+    <div class="contactForm__head">
+      <div class="kicker">Contact</div>
+      <div class="section-title">Send me a message</div>
+      <p class="muted contactForm__sub">
+        Tell me what you’re building and I’ll reply with next steps.
+      </p>
+    </div>
+
+    <div class="contactForm__grid">
+      <div class="field">
+        <label class="field__label" for="name">Name</label>
+        <input class="field__control" id="name" name="name" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="email">Email</label>
+        <input class="field__control" id="email" name="email" type="email" autocomplete="email" required />
+      </div>
+
+      <div class="field contactForm__full">
+        <label class="field__label" for="subject">Subject</label>
+        <input class="field__control" id="subject" name="subject" type="text" placeholder="Website, Shopify, automation, etc." />
+      </div>
+
+      <div class="field contactForm__full">
+        <label class="field__label" for="message">Message</label>
+        <textarea
+          class="field__control field__control--textarea"
+          id="message"
+          name="message"
+          rows="6"
+          required
+          placeholder="Scope, timeline, links, budget range…"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="contactForm__actions">
+      <button class="btn btn--primary" type="submit" data-submit>
+        Send message <span aria-hidden="true">→</span>
+      </button>
+
+      <div class="contactForm__status" aria-live="polite">
+        <span class="muted" data-hint>Typically respond within 1–2 business days.</span>
+      </div>
+    </div>
+  </form>
+
+  <!-- success OUTSIDE the form so the big card disappears completely -->
+  <div class="contactSuccess" data-success-card aria-hidden="true">
+    <div class="contactSuccess__icon" aria-hidden="true">✓</div>
+    <div>
+      <div class="contactSuccess__title">Message sent successfully</div>
+      <div class="contactSuccess__sub">I’ll get back to you soon.</div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const wrap = document.querySelector("[data-contact-wrap]");
+    const form = document.querySelector("[data-contact-form]");
+    if (!wrap || !form) return;
+
+    const submitBtn = form.querySelector("[data-submit]");
+    const hint = form.querySelector("[data-hint]");
+    const successCard = wrap.querySelector("[data-success-card]");
+
+    const setLoading = (on) => {
+      if (!submitBtn) return;
+      submitBtn.disabled = on;
+      submitBtn.dataset.loading = on ? "true" : "false";
+      submitBtn.innerHTML = on
+        ? "Sending…"
+        : 'Send message <span aria-hidden="true">→</span>';
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      try {
+        form.classList.remove("send-error");
+        setLoading(true);
+        if (hint) hint.textContent = "Sending…";
+
+        const fd = new FormData(form);
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: fd,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!res.ok) throw new Error("Send failed");
+
+        // Hide form entirely + show compact success card
+        wrap.classList.add("is-sent");
+        if (successCard) successCard.setAttribute("aria-hidden", "false");
+
+        // optional: reset now that the form is hidden
+        form.reset();
+      } catch (err) {
+        form.classList.add("send-error");
+        if (hint) hint.textContent = "Something went wrong — please try again.";
+        setLoading(false);
+        window.setTimeout(() => form.classList.remove("send-error"), 1400);
+      }
+    });
+  })();
+</script>

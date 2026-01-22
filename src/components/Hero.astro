@@ -1,0 +1,32 @@
+---
+const { title, lede, primaryCtaHref = "#projects", primaryCtaLabel = "View Projects", secondaryCtaHref = "#contact", secondaryCtaLabel = "Contact" } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="container hero__inner split">
+    <div class="stack no-gap">
+      <div class="kicker">Software + Product Engineering</div>
+      <h1 class="h1">{title}</h1>
+      <p class="lede">{lede}</p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href={primaryCtaHref}>{primaryCtaLabel}</a>
+        <a class="btn btn--ghost" href={secondaryCtaHref}>{secondaryCtaLabel}</a>
+      </div>
+    </div>
+
+    <div class="card card--glass">
+      <div class="card__pad stack">
+        <div class="section-title">Quick stats</div>
+        <div class="muted">Shopify + Astro builds · Automation · Coatings R&D</div>
+        <div class="row" style="flex-wrap: wrap;">
+          <span class="btn" style="pointer-events:none;">Astro</span>
+          <span class="btn" style="pointer-events:none;">Shopify</span>
+          <span class="btn" style="pointer-events:none;">Python</span>
+          <span class="btn" style="pointer-events:none;">UX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

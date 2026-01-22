@@ -1,0 +1,13 @@
+---
+const { name, desc, href } = Astro.props;
+---
+
+<article class="card card--glass">
+  <div class="card__pad stack">
+    <div class="row" style="justify-content: space-between; align-items: start;">
+      <strong>{name}</strong>
+      {href && <a class="muted" href={href} target="_blank" rel="noreferrer">Open →</a>}
+    </div>
+    <p class="muted" style="line-height:1.6;">{desc}</p>
+  </div>
+</article>

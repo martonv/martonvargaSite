@@ -1,0 +1,17 @@
+---
+const { id, title, subtitle } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="container">
+    <div class="section__head">
+      <div class="stack" style="gap:.35rem;">
+        <div class="section-title">{title}</div>
+        {subtitle && <div class="muted">{subtitle}</div>}
+      </div>
+      <slot name="actions" />
+    </div>
+
+    <slot />
+  </div>
+</section>

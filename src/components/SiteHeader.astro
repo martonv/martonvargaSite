@@ -1,0 +1,22 @@
+---
+const links = [
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a href="/" class="row" style="gap:.6rem;">
+      <span style="width:.6rem;height:.6rem;border-radius:999px;background: hsl(var(--primary)); box-shadow: var(--shadow-glow);"></span>
+      <strong>Marton V</strong>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {links.map(l => <a href={l.href}>{l.label}</a>)}
+      <a class="btn btn--primary" href="#contact">Let’s talk</a>
+    </nav>
+  </div>
+</header>
