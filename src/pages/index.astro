@@ -6,12 +6,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 import ContactForm from "../components/ContactForm.astro";
 
 const projects = [
-  { name: "Stain & Seal Supply", desc: "E-commerce UI/UX development. 2023 - Present.", href: "https://stainandsealsupply.com" },
+  { name: "Stain & Seal Supply", desc: "E-commerce UI/UX development. Custom web apps. 2023 - Present.", href: "https://stainandsealsupply.com" },
   { name: "Varga Venture", desc: "Freelancing frontend/backend SWE + business development.", href: "https://vargaventure.com" },
-  { name: "Gopherwood.us", desc: "Site + retailer map build. November 2025.", href: "https://gopherwood.us" },
-  { name: "Strokes Gained Golf Simulator", desc: "Premium website + booking funnel for an indoor simulator business. Jan 2026.", href: "https://golfstrokesgained.com" },
-  { name: "IronSeal Concrete Products", desc: "Product site + conversion-focused landing pages.", href: "#" },
-  { name: "IronSeal Concrete Products", desc: "Product site + product formulation. Co-founder. Work in progress.", href: "#" },
+  { name: "Gopherwood.us", desc: "Site + retailer map build. November 2025 - Present.", href: "https://gopherwood.us" },
+  { name: "Expert Wood Care", desc: "Brand site + Shopify store + custom integrations. 2023 - Present.", href: "https://www.expertwoodcare.com" },
+  { name: "Strokes Gained Golf Simulator", desc: "Premium website + booking funnel for an indoor simulator business. Jan 2026 - Present.", href: "https://golfstrokesgained.com" },
+  { name: "IronSeal Concrete Products", desc: "Product site + Shopify store + product formulation. Co-founder. Work in progress.", href: "https://ironsealproducts.com" },
 ];
 ---
 
@@ -28,6 +28,7 @@ const projects = [
   <Section id="projects" title="Projects" subtitle="Recent builds and experiments.">
     <div class="grid grid--3">
       {projects.map(p => <ProjectCard {...p} />)}
+      <div class="muted">& many more</div>
     </div>
   </Section>
 
@@ -65,12 +66,12 @@ const projects = [
   <Section id="skills" title="Skills" subtitle="Tools I reach for.">
     <div class="card card--glass">
       <div class="card__pad row" style="flex-wrap: wrap;">
-        <span class="btn hover-glow" style="pointer-events:none;">Astro / HTML / CSS / JS</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Astro / HTML / CSS / Tailwind / JS</span>
         <span class="btn hover-glow" style="pointer-events:none;">Shopify (Liquid, themes), GraphQL</span>
         <span class="btn hover-glow" style="pointer-events:none;">Python (APIs, automation, Flask, Django)</span>
         <span class="btn hover-glow" style="pointer-events:none;">NodeJS, FASTAPI backends</span>
         <span class="btn hover-glow" style="pointer-events:none;">Unix/Linux</span>
-        <span class="btn hover-glow" style="pointer-events:none;">Cloudflare</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Cloudflare Workers & Pages, Wrangler</span>
         <span class="btn hover-glow" style="pointer-events:none;">Google Workspace/Analytics/Tag Manager/Search Console</span>
         <span class="btn hover-glow" style="pointer-events:none;">Git/Github</span>
         <span class="btn hover-glow" style="pointer-events:none;">Netlify</span>
@@ -131,10 +132,11 @@ const projects = [
           <strong>Let’s build something useful.</strong>
           <div class="muted">Email works best. If you want, include a link + goal + timeline.</div>
           <div class="row" style="flex-wrap: wrap;">
-            <a class="btn btn--primary" href="mailto:you@domain.com">Email me</a>
-            <a class="btn" href="#">Download resume</a>
+            <a class="btn btn--primary" href="mailto:marton@vargaventure.com">Email me</a>
+            <!-- <a class="btn" href="#">Download resume</a> -->
           </div>
         </div>
+        <!--
         <div class="stack">
           <div class="muted">Also:</div>
           <div class="row" style="flex-wrap: wrap;">
@@ -142,6 +144,7 @@ const projects = [
             <a class="btn" href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
+        -->
       </div>
     </div>
   </Section>
