@@ -77,6 +77,8 @@ body {
 }
 
 .card__pad { padding: 1.25rem; }
+.padding-grid { padding: 0 1.25rem 1.25rem; }
+@media (min-width: 900px) { .padding-grid { padding: 0 1.75rem 1.75rem; } }
 @media (min-width: 900px) { .card__pad { padding: 1.75rem; } }
 
 /* ---------- Buttons ---------- */
@@ -323,6 +325,35 @@ textarea.field__control{
   font-size:.92rem;
   margin-top:.08rem;
   line-height:1.35;
+}
+
+.right{
+  margin-left:auto;
+}
+
+.edu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.edu-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-right {
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.gap{
+  padding-top: 0.35rem;
+}
+
+.max-width-btn{
+  max-width: 180px;
 }
 
 /* ---------- State toggles ---------- */

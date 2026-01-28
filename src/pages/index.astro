@@ -1,23 +1,152 @@
 ---
-import SiteLayout from "../layouts/siteLayout.astro";
-import Header from "../components/Header.astro";
-import ResumeBody from "../components/ResumeBody.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ContactForm from "../components/ContactForm.astro";
+
+const projects = [
+  { name: "Stain & Seal Supply", desc: "E-commerce UI/UX development. 2023 - Present.", href: "https://stainandsealsupply.com" },
+  { name: "Varga Venture", desc: "Freelancing frontend/backend SWE + business development.", href: "https://vargaventure.com" },
+  { name: "Gopherwood.us", desc: "Site + retailer map build. November 2025.", href: "https://gopherwood.us" },
+  { name: "Strokes Gained Golf Simulator", desc: "Premium website + booking funnel for an indoor simulator business. Jan 2026.", href: "https://golfstrokesgained.com" },
+  { name: "IronSeal Concrete Products", desc: "Product site + conversion-focused landing pages.", href: "#" },
+  { name: "IronSeal Concrete Products", desc: "Product site + product formulation. Co-founder. Work in progress.", href: "#" },
+];
 ---
 
-<SiteLayout title="Marton Varga | Portfolio" description="Portfolio for Marton Varga, Software Engineer & Chemical Engineer.">
-  <Header
-    name="Marton Varga"
-    title="Software Engineer • Chemical Engineer • Formulation Chemist"
-    location="Centennial, CO"
-    email="marton@vargaventure.com"
-    phone="(615) 715-0431"
-    site="martonvarga.com"
+<BaseLayout title="Marton V — Portfolio" description="Software Engineer & Formulation Chemist">
+  <Hero
+    title="Systems-minded engineer driven by continuous learning and real-world impact."
+    lede="I design and build fast, clean web experiences and custom implementations that drive revenue, reduce manual work, and scale business operations. Strong in front-end implementation, tooling, and pragmatic problem-solving, with a deep interest in applied physics, optimization, and elegant technical solutions."
+    primaryCtaHref="#projects"
+    primaryCtaLabel="See projects"
+    secondaryCtaHref="#contact"
+    secondaryCtaLabel="Get in touch"
   />
 
-  <main class="container">
-    <ResumeBody />
-  </main>
+  <Section id="projects" title="Projects" subtitle="Recent builds and experiments.">
+    <div class="grid grid--3">
+      {projects.map(p => <ProjectCard {...p} />)}
+    </div>
+  </Section>
 
-  <Footer />
-</SiteLayout>
+  <Section id="experience" title="Experience" subtitle="What I’ve been doing lately.">
+    <div class="grid grid--2">
+      <div class="card card--glass">
+        <div class="card__pad stack">
+          <strong>Software Engineer & Formulation Chemist — Restorative Industries</strong>
+          <div class="muted">Jun 2023 – Present</div>
+          <ul class="stack" style="gap:.5rem;">
+            <li class="muted">Shopify storefront development, UX improvements, and private apps.</li>
+            <li class="muted">Built and integrated custom software solutions.</li>
+            <li class="muted">Automation scripts for bulk ops + analytics via APIs.</li>
+            <li class="muted">Developed web apps and iPhone app.</li>
+            <li class="muted">Provided coatings R&D and documentation.</li>
+            <li class="muted">Formulated products and refined existing formulations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card--glass">
+        <div class="card__pad stack">
+          <strong>Founder — Varga Venture Consulting</strong>
+          <div class="muted">Jun 2023 – Present</div>
+          <ul class="stack" style="gap:.5rem;">
+            <li class="muted">Delivered custom software solutions to clients.</li>
+            <li class="muted">Provided technical consulting and business development strategies.</li>
+            <li class="muted">Specialized in web development, automation, and process optimization.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="skills" title="Skills" subtitle="Tools I reach for.">
+    <div class="card card--glass">
+      <div class="card__pad row" style="flex-wrap: wrap;">
+        <span class="btn hover-glow" style="pointer-events:none;">Astro / HTML / CSS / JS</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Shopify (Liquid, themes), GraphQL</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Python (APIs, automation, Flask, Django)</span>
+        <span class="btn hover-glow" style="pointer-events:none;">NodeJS, FASTAPI backends</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Unix/Linux</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Cloudflare</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Google Workspace/Analytics/Tag Manager/Search Console</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Git/Github</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Netlify</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Modal</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Embedded Systems</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Product & growth engineering</span>
+        <span class="btn hover-glow" style="pointer-events:none;">Coatings formulation</span>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="education" title="Education & Research" subtitle="What I've studied.">
+    <div class="card card--glass">
+      <div class="card__pad row edu-row">
+        <div class="edu-left">
+          <strong>Tennessee Tech</strong>
+          <div class="muted gap">Bachelors of Science in Chemical Engineering</div>
+        </div>
+
+        <div class="muted edu-right">Grad. May 2024</div>
+      </div>
+
+      <div class="grid grid--2 padding-grid">
+        <div class="card card--glass">
+          <div class="card__pad stack">
+            <strong>Python Software for FTMW Spectrometer | Dr. Gurusinghe</strong>
+            <div class="muted">Aug 2023 – May 2024</div>
+            <ul class="stack" style="gap:.5rem;">
+              <li class="muted">Developed unprecedented overarching Python software controlling oscilloscopes, Fabry-Perot cavity mirror actuator, delay generator, synthesizers, and other components for a novel L-Shaped FTMW spectrometer in Dr. Ranil Gurusinghe’s research lab. </li>
+              <li class="muted">Designed an autonomous calibration system, overarching controller, and user interface in Python for spectrometer operation and research.</li>
+              <li class="muted">Research presented at ISMS & TTU CISE. Publication is pending.</li>
+            </ul>
+            <a class="btn max-width-btn" href="">Research poster</a>
+          </div>
+        </div>
+
+        <div class="card card--glass">
+          <div class="card__pad stack">
+            <strong>PTFE Diffusivity Analysis for Underground Soil Sensor | Dr. Stretz</strong>
+            <div class="muted">Oct 2022 – November 2023</div>
+            <ul class="stack" style="gap:.5rem;">
+              <li class="muted">Built custom diffusion analysis setup for data collection.</li>
+              <li class="muted">Selected appropriate materials and components for the setup.</li>
+              <li class="muted">Conducted research examining CO2 diffusivity through PTFE membranes.</li>
+              <li class="muted">Integrated heat transfer component for experimentation with thermal gradient.</li>
+              <li class="muted">Presented research at AICHE 2024.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="contact" title="Contact" subtitle="Fastest way to reach me.">
+    <div class="card card--glass">
+      <div class="card__pad split">
+        <div class="stack">
+          <strong>Let’s build something useful.</strong>
+          <div class="muted">Email works best. If you want, include a link + goal + timeline.</div>
+          <div class="row" style="flex-wrap: wrap;">
+            <a class="btn btn--primary" href="mailto:you@domain.com">Email me</a>
+            <a class="btn" href="#">Download resume</a>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="muted">Also:</div>
+          <div class="row" style="flex-wrap: wrap;">
+            <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="contact" title="Or send a message" subtitle="Use the form below to get in touch directly.">
+    <ContactForm />
+  </Section>
+</BaseLayout>
