@@ -381,3 +381,82 @@ textarea.field__control{
   .contactSuccess{ transition:none; transform:none; }
   .contactWrap.is-sent [data-success-card]{ transition:none; }
 }
+
+/* Drawer for mobile nav */
+/* ---------- Mobile: full-width drawer under header ---------- */
+
+.navToggle { display: none; }
+.nav--desktop { display: flex; }
+
+@media (max-width: 760px) {
+  .nav--desktop { display: none; }
+
+  .navToggle {
+    display: inline-grid;
+    gap: 6px;
+    padding: .65rem .7rem;
+    border-radius: 12px;
+    border: 1px solid hsl(var(--border) / .7);
+    background: hsl(var(--card) / .35);
+    cursor: pointer;
+  }
+  .navToggle__bar {
+    width: 22px;
+    height: 2px;
+    background: hsl(var(--fg) / .85);
+    border-radius: 999px;
+  }
+}
+
+/* Drawer container lives INSIDE header so it naturally sits "under" the bar */
+.underDrawer{
+  border-top: 1px solid hsl(var(--border) / .5);
+  background: hsl(var(--bg) / .6);
+  backdrop-filter: blur(18px);
+
+  /* animation */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height .22s ease, opacity .18s ease, transform .18s ease;
+}
+
+/* open state toggled on the header */
+.site-header.is-open .underDrawer{
+  max-height: 320px; /* big enough for your links + button */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* inner layout */
+.underDrawer__inner{
+  padding: .75rem 0 1rem;
+}
+
+.underDrawer__nav{
+  display: grid;
+  gap: .35rem;
+}
+
+.underDrawer__link{
+  padding: .8rem .75rem;
+  border-radius: 12px;
+  color: hsl(var(--fg) / .9);
+  background: transparent;
+}
+
+.underDrawer__link:hover{
+  background: hsl(var(--card) / .35);
+}
+
+.underDrawer__cta{
+  width: 100%;
+  justify-content: center;
+  margin-top: .35rem;
+}
+
+/* optional: stop double border with sticky header */
+.site-header.is-open{
+  box-shadow: var(--shadow-sm);
+}
