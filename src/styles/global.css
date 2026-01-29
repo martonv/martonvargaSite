@@ -460,3 +460,14 @@ textarea.field__control{
 .site-header.is-open{
   box-shadow: var(--shadow-sm);
 }
+
+.headerLogo{
+  max-width:70px;
+  height:100%;
+}
+
+.headerLogo:hover{
+  filter:
+  drop-shadow(0 0 6px rgba(255,255,255,.9))
+  drop-shadow(0 0 14px rgba(255,255,255,.6));
+}
