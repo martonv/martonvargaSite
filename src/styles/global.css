@@ -411,7 +411,6 @@ textarea.field__control{
 /* Drawer container lives INSIDE header so it naturally sits "under" the bar */
 .underDrawer{
   border-top: 1px solid hsl(var(--border) / .5);
-  background: hsl(var(--bg) / .6);
   backdrop-filter: blur(18px);
 
   /* animation */
